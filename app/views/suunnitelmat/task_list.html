@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Tehtävälista</h1>
+
+<p>
+    <a href="#" class="btn btn-primary">Lisää uusi tehtävä</a>
+    
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Tila</th>
+            <th>Takaraja</th>
+            <th>Tärkeys</th>
+            <th>Luokka</th>            
+        </tr>
+    </thead>
+    
+    <tbody>
+        <!--listataan tehtävät tähän -->
+        <tr>
+            <td><a href="#">Katso syksyn kurssien sivut</a></td>
+            <td>Aloittamatta</td>
+            <td>25.8.2016</td>
+            <td>2</td>
+            <td>Koulu</td>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock %
