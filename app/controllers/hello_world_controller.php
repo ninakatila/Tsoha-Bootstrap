@@ -7,9 +7,33 @@
    	  echo 'Tämä on etusivu!';
     }
     
-      /* public static function login(){
-     	View::make('login.html');
-    }*/
+    public static function login(){
+     	View::make('/suunnitelmat/login.html');
+    }
+    
+    public static function task_list(){
+     	View::make('/suunnitelmat/task_list.html');
+    }
+    
+     public static function task(){
+     	View::make('/suunnitelmat/task.html');
+    }
+    
+     public static function edit_task(){
+     	View::make('/suunnitelmat/edit_task.html');
+    }
+    
+     public static function category_list(){
+     	View::make('/suunnitelmat/category_list.html');
+    }
+    
+     public static function category(){
+     	View::make('/suunnitelmat/category.html');
+    }
+    
+     public static function edit_category(){
+     	View::make('/suunnitelmat/edit_category.html');
+    }
 
     public static function sandbox(){
       // Testaa koodiasi täällä

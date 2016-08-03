@@ -1,16 +1,30 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Tehtävä</h1>
+
+<!-- tehtävän kuvaus -->
+<p class="lead">
+    Katso syksyn kurssien sivut, joille ilmoittaudut. Tarkista luentojen ajankohta, tarvitseeko hankkia materiaalia, sopiva harjoitusryhmä
+
+</p>
+
+<!-- tehtävän muut tiedot listattuna -->
+<ul>
+    <li><strong>Tehtävän nimi:</strong> Katso syksyn kurssien sivut</li>
+    <li><strong>Takaraja:</strong>25.8.2016</li>
+    <li><strong>Tila:</strong> Aloittamatta</li>
+    <li><strong>Tärkeys:</strong> 2</li>
+    <li><strong>Luokka:</strong> Koulu</li>       
+</ul>
+
+<p>
+    <a href="#" class="btn btn-primary btn-lg">Muokkaa tehtävää</a>
+
+</p>
+
+<p>
+    <button class="btn btn-danger">Poista tehtävä </button>
+</p>
+
+{% endblock %}

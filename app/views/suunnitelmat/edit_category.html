@@ -1,16 +1,23 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Muokkaa luokkaa</h1>
+
+<form>
+    <div class="form-group">
+        <label>Luokan nimi:</label>
+        <input class="form-control" value="Koulu" type="text">
+    </div>
+    <div class="form-group">
+        <label>Luokan kuvaus:</label>
+        <textarea class="form-control"> Omaan kouluun ja koulutöihin liittyvät tehtävät
+        </textarea>
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Tallenna</button>
+    </div>
+    
+</form>
+
+{% endblock %}
