@@ -16,7 +16,7 @@ insert into importance (importance_value, importance_description, personid) valu
 ('2', 'Melko tärkeä', (select id from person where username = 'testtiin')),
 ('3', 'Tee, kun huvittaa', (select id from person where username = 'testtiin'));
 
-insert into task (task_name, task_status, task_description, task_category, task_importance, deadline, personid) values
-('Soita Matille', 'Avoin', 'Kerro miten toimitaan', (select id from category where category_name = 'Työ' limit 1), (select id from importance where importance_value = '1' limit 1), '2016-08-13', (select id from person where username = 'testtiin')),
-('Vastaa Pirjolle', 'Avoin', 'Vastaa Pirjon mailiin', (select id from category where category_name = 'Työ' limit 1), (select id from importance where importance_value = '2' limit 1), '2016-08-15', (select id from person where username = 'testtiin')),
-('TNL laskarit', 'Kesken', 'Tee TNL laskarit', (select id from category where category_name = 'Opiskelu' limit 1), (select id from importance where importance_value = '1' limit 1), '2016-08-10', (select id from person where username = 'testtaav'));
+insert into task (task_name, task_status, task_description, task_importance, deadline, personid) values
+('Soita Matille', 'Avoin', 'Kerro miten toimitaan', (select id from importance where importance_value = '1' limit 1), '2016-08-13', (select id from person where username = 'testtiin')),
+('Vastaa Pirjolle', 'Avoin', 'Vastaa Pirjon mailiin', (select id from importance where importance_value = '2' limit 1), '2016-08-15', (select id from person where username = 'testtiin')),
+('TNL laskarit', 'Kesken', 'Tee TNL laskarit', (select id from importance where importance_value = '1' limit 1), '2016-08-10', (select id from person where username = 'testtaav'));

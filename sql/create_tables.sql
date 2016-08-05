@@ -25,7 +25,6 @@ task_name varchar (80),
 task_status varchar (80),
 task_description varchar (1200),
 deadline date,
-task_category integer REFERENCES category (id) ON DELETE CASCADE,
 task_importance integer REFERENCES importance (id) ON DELETE CASCADE,
 personid integer REFERENCES person(ID) ON DELETE CASCADE);
 
