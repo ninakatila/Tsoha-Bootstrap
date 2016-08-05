@@ -1,1 +1,9 @@
--- Lisää DROP TABLE lauseet tähän tiedostoon
+DROP TABLE IF EXISTS categorize CASCADE;
+
+DROP TABLE IF EXISTS task CASCADE; 
+
+DROP TABLE IF EXISTS importance CASCADE;
+
+DROP TABLE IF EXISTS category CASCADE;
+
+DROP TABLE IF EXISTS person CASCADE;
