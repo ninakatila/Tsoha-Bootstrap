@@ -13,6 +13,9 @@ Yleisiä linkkejä:
 * [Linkki tehtäväluokkien listaussivulle](http://kanikani.users.cs.helsinki.fi/tsoha2016/muistilista/tehtavaluokat)
 * [Linkki tehtavaluokan tietosivulle](http://kanikani.users.cs.helsinki.fi/tsoha2016/muistilista/tehtavaluokka)
 * [Linkki tehtäväluokan muokkaussivulle](http://kanikani.users.cs.helsinki.fi/tsoha2016/muistilista/tehtavaluokka/muokkaa)
+* [Linkki prioriteettien listaussivulle](http://kanikani.users.cs.helsinki.fi/tsoha2016/muistilista/prioriteetit)
+* [Linkki prioriteetin tietosivulle](http://kanikani.users.cs.helsinki.fi/tsoha2016/muistilista/prioriteetti)
+* [Linkki prioriteetin muokkaussivulle](http://kanikani.users.cs.helsinki.fi/tsoha2016/muistilista/prioriteetti/muokkaa)
 
 ## Työn aihe
 
