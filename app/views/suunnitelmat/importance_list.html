@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Prioriteetit</h1>
+
+<p>
+    <a href="#" class="btn btn-primary">Lisää uusi prioriteetti</a>
+    
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Arvo</th>
+            <th>Kuvaus</th>                        
+        </tr>
+    </thead>
+    
+    <tbody>
+        <!--listataan prioriteetit tähän -->
+        <tr>
+            <td><a href="#">2</a></td>
+            <td> Tehtävä takarajaan mennessä, mutta prioriteetilla 1 olevat tehtävät ovat aina etusijalla. Mikäli et ennätä tekemään tätä tehtävää, pyri sopimaan uusi takaraja ajoissa ennen takarajaa.</td>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock %}

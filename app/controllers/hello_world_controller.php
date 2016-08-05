@@ -34,6 +34,18 @@
      public static function edit_category(){
      	View::make('/suunnitelmat/edit_category.html');
     }
+    
+      public static function importance_list(){
+     	View::make('/suunnitelmat/importance_list.html');
+    }
+    
+     public static function importance(){
+     	View::make('/suunnitelmat/importance.html');
+    }
+    
+     public static function edit_importance(){
+     	View::make('/suunnitelmat/edit_importance.html');
+    }
 
     public static function sandbox(){
       // Testaa koodiasi täällä

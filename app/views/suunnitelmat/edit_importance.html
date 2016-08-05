@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Muokkaa prioriteettia</h1>
+
+<form>
+    <div class="form-group">
+        <label>Prioriteetin arvo:</label>
+        <input class="form-control" value="2" type="text">
+    </div>
+    <div class="form-group">
+        <label>Prioriteetin kuvaus:</label>
+        <textarea class="form-control"> Tehtävä takarajaan mennessä, mutta prioriteetilla 1 olevat tehtävät ovat aina etusijalla. Mikäli et ennätä tekemään tätä tehtävää, pyri sopimaan uusi takaraja ajoissa ennen takarajaa.
+        </textarea>
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Tallenna</button>
+    </div>
+    
+</form>
+
+{% endblock %}

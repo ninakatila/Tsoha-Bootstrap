@@ -31,6 +31,18 @@
   $routes->get('/muistilista/tehtavaluokka/muokkaa', function() {
     HelloWorldController::edit_category();
   });
+  
+  $routes->get('/muistilista/prioriteetit', function() {
+    HelloWorldController::importance_list();
+  });
+  
+   $routes->get('/muistilista/prioriteetti', function() {
+    HelloWorldController::importance();
+  });
+  
+  $routes->get('/muistilista/prioriteetti/muokkaa', function() {
+    HelloWorldController::edit_importance();
+  });
 
   $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
