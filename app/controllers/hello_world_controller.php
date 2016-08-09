@@ -1,5 +1,5 @@
 <?php
-
+  require 'app/models/task.php';
   class HelloWorldController extends BaseController{
 
     public static function index(){
@@ -49,6 +49,10 @@
 
     public static function sandbox(){
       // Testaa koodiasi täällä
-      View::make('helloworld.html');
+      $tasks = Task::all();
+      Kint::dump($tasks);
+      
+      $eka = Task::find(1);
+      Kint::dump($eka);
     }
   }
