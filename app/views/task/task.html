@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Tehtävä</h1>
+
+<p class="lead">
+    {{task.task_description}}
+</p>
+
+<ul>
+    <li><strong>Tehtävän nimi: </strong>{{task.task_name}}</li>
+    <li><strong>Takaraja: </strong>{{task.deadline}}</li>
+    <li><strong>Tila: </strong>{{task.task_status}}</li>
+    <li><strong>Prioriteetti: </strong>{{task.task_importance}}</li>
+    <!-- lisätään myöhemmin <li><strong>Luokka:</strong> {{categorize.task_category}}</li> -->      
+
+</ul>
+
+<p>
+    <a href="{{base_bath}}/tehtava/muokkaa" class="btn btn-primary btn-lg">Muokkaa tehtävää</a>
+
+</p>
+
+<p>
+    <button class="btn btn-danger">Poista tehtävä </button>
+</p>
+
+{% endblock %}

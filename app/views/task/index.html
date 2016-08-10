@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Tehtävälista</h1>
+
+<p>
+    <a href="{{base_bath}}/tehtava/uusi" class="btn btn-primary">Lisää uusi tehtävä</a>
+
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Tila</th>
+            <th>Takaraja</th>
+            <th>Prioriteetti</th>
+            <!-- lisätään myöhemmin vielä <th>Luokka</th> -->            
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td><a href="{{base_path}}/tehtava/{{task.id}}">{{task.task_name}}</td>
+            <td>{{task.task_status}}</td>
+            <td>{{task.deadline}}</td>
+            <td>{{task.task_importance}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -47,3 +47,11 @@
   $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
   });
+  
+    $routes->get('/tehtavalista', function() {
+        TaskController::index();
+  });
+  
+      $routes->get('/tehtava/:id', function($id) {
+        TaskController::show($id);
+  });
