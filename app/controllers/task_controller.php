@@ -25,8 +25,7 @@ class TaskController extends BaseController{
         ));
         $task->save();
                         
-       //Kysy miten tämän Redirectin pitäisi olla, sillä nyt ei toimi
-       //Redirect::to('/task/:id' .$task->id, array('message' => 'Tehtävä on lisätty muistilistaan'));
+       Redirect::to('/tehtava/' .$task->id, array('message' => 'Tehtävä on lisätty muistilistaan'));
     }
 
 }
