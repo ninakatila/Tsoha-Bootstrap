@@ -52,6 +52,14 @@
         TaskController::index();
   });
   
+      $routes->post('/tehtava', function() {
+        TaskController::store();
+  });
+  
+      $routes->get('/tehtava/uusi', function() {
+        TaskController::create();
+  });
+  
       $routes->get('/tehtava/:id', function($id) {
         TaskController::show($id);
   });
