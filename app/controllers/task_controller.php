@@ -23,10 +23,27 @@ class TaskController extends BaseController{
             'deadline'=> $params ['deadline'],
             'task_importance' => $params ['task_importance']
         ));
-        $task->save();
+       /* ei toiminut tämä seuraava
+       $task = new Task($attributes);
+       $errors = $task->errors();
+        
+        if (count($errors) == 0){
+            $task->save();
                         
        Redirect::to('/tehtava/' .$task->id, array('message' => 'Tehtävä on lisätty muistilistaan'));
+    }else{
+        View::make('task/new.html', array('errors' => $errors, 'attributes'=> $attributes));
     }
-
+        */
+        
+        $errors = $task->validate_task_description();
+               
+        if (count($errors) == 0){
+            $task->save();
+        Redirect::to('/tehtava/' .$task->id, array('message' => 'Tehtävä on lisätty muistilistaan'));
+        }else{
+        View::make('task/new.html', array('message'=> 'jotain meni pieleen'));
+        }
+    
+    }
 }
-

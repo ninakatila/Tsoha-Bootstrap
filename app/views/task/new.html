@@ -2,21 +2,32 @@
 {% block content %}
 
 <h1>Lisää tehtävä muistilistaan</h1>
+<div class="alert alert-danger">
+    <!-- muokkaa tämä virheilmoitus sitten kun saat basemodelin errors metodin toimimaan -->
+    {{message}}
+</div>
 
 <form method="post" action="{{base_path}}/tehtava">
     <div class="form-group">
-        <label>Nimi</label>
-        <input name="task_name" class="form-control" type="text">
+        <label class="control-label">Nimi</label>
+        <!-- validoinnin jälkeen sisältö ei jää kenttään vaikka pitäisi jäädä -->
+        <input name="task_name" class="form-control" value="{{attributes.task_name}}" type="text">
     </div>
 
     <div class="form-group">
-        <label>Tila</label>
-        <input name="task_status" class="form-control" type="text">
+        <label class="control-label">Tila</label>
+        <select name="task_status" class="form-control">
+            <option value="open">Avoin</option>
+            <option value="in_progress">Kesken</option>
+            <option value="done">Valmis</option>
+        </select>
+            
     </div>
 
     <div class="form-group">
-        <label>Kuvaus</label>
-        <input name="task_description" class="form-control" type="text">
+        <label class="control-label">Kuvaus</label>
+        <!-- validoinnin jälkeen sisältö ei jää kenttään vaikka pitäisi jäädä -->
+        <input name="task_description" class="form-control" value="{{attributes.task_description}}" type="text">
     </div>
 
     <div class="form-group">
@@ -26,7 +37,11 @@
 
     <div class="form-group">
         <label>Prioriteetti</label>
-        <input name="task_importance" class="form-control" type="text">
+        <select name="task_importance" class="form-control">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
     </div>
 
     <div class="form-group">

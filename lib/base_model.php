@@ -21,6 +21,14 @@
 
       foreach($this->validators as $validator){
         // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+      //Miten kutsun? seuraava näyttää toimivalta, mutta en tiedä
+      $validator_errors= array();
+          array_push($validator_errors, $validator['validate_task_name']);
+          array_push ($validator_errors, $validator['validate_task_description']);
+          array_push ($validator_errors, $validator['validate_deadline']);
+     
+      $errors = array_merge($errors, $validator_errors);
+          
       }
 
       return $errors;

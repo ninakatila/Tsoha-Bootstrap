@@ -49,10 +49,14 @@
 
     public static function sandbox(){
       // Testaa koodiasi täällä
-      $tasks = Task::all();
-      Kint::dump($tasks);
-      
-      $eka = Task::find(1);
-      Kint::dump($eka);
+    $muista = new Task(array(
+        'task_name'=> 'd',
+        'task_status'=> 'Avoin',
+        'task_description'=> 'validoinnin:testausta',
+        'deadline'=> '2016',
+        'task_importance'=> '1'
+    ));
+    $errors = $muista->errors();
+      Kint::dump($errors);
     }
   }
