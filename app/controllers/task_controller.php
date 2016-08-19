@@ -16,14 +16,22 @@ class TaskController extends BaseController{
 
     public static function store(){
         $params = $_POST;
-        $task = new Task(array(
+       /* vanhaa  $task = new Task(array(
             'task_name' => $params ['task_name'],
             'task_status' => $params ['task_status'],
             'task_description' => $params ['task_description'],
             'deadline'=> $params ['deadline'],
             'task_importance' => $params ['task_importance']
         ));
-       /* ei toiminut tämä seuraava
+       */
+        $attributes = array(
+            'task_name' => $params ['task_name'],
+            'task_status' => $params ['task_status'],
+            'task_description' => $params ['task_description'],
+            'deadline'=> $params ['deadline'],
+            'task_importance' => $params ['task_importance']
+        );
+        
        $task = new Task($attributes);
        $errors = $task->errors();
         
@@ -34,9 +42,9 @@ class TaskController extends BaseController{
     }else{
         View::make('task/new.html', array('errors' => $errors, 'attributes'=> $attributes));
     }
-        */
         
-        $errors = $task->validate_task_description();
+        
+    /*    $errors = $task->validate_task_description();
                
         if (count($errors) == 0){
             $task->save();
@@ -44,6 +52,6 @@ class TaskController extends BaseController{
         }else{
         View::make('task/new.html', array('message'=> 'jotain meni pieleen'));
         }
-    
+    */
     }
 }

@@ -4,7 +4,7 @@
     TaskController::index();
   });
   
-  $routes->get('/muistilista/kirjautuminen', function() {
+  /*$routes->get('/muistilista/kirjautuminen', function() {
     HelloWorldController::login();
   });
   
@@ -47,7 +47,7 @@
   $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
   });
-  
+  */
     $routes->get('/tehtavalista', function() {
         TaskController::index();
   });

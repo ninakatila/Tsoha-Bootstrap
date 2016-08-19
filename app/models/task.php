@@ -6,7 +6,7 @@ class Task extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_task_name', 'validate_task_description', 'validate_deadline');
+        $this->validators = array('validate_task_name', 'validate_task_description');
     }
 
     public static function all() {
@@ -79,15 +79,16 @@ class Task extends BaseModel {
         return $errors;
     }
 
-    public function validate_deadline() {
+   /* public function validate_deadline() {
         $errors = array();
         if (preg_match("/^(\d{4})-(\d{2})-(\d{2})$/", $this->deadline, $matches)) {
             if (checkdate($matches[2], $matches[3], $matches[1])) {
                 return true;
             }
         } else {
-            return $errors[] = 'Takaraja tulee olla muotoa vvvv-kk-pp';
-        }
+            $errors[] = 'Takaraja tulee olla muotoa vvvv-kk-pp';
+        } return $errors;
     }
+    */
 
 }
