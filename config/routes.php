@@ -60,6 +60,18 @@
         TaskController::create();
   });
   
-      $routes->get('/tehtava/:id', function($id) {
+      $routes->get('/tehtava/:id/muokkaa', function($id) {
+        TaskController::edit($id);
+  });
+  
+      $routes->post('/tehtava/:id/muokkaa', function($id) {
+        TaskController::update($id);
+  });
+  
+        $routes->post('/tehtava/:id/poista', function($id) {
+        TaskController::destroy($id);
+  });
+  
+        $routes->get('/tehtava/:id', function($id) {
         TaskController::show($id);
   });

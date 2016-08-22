@@ -56,6 +56,17 @@ class Task extends BaseModel {
         $row = $query->fetch();
         $this->id = $row ['id'];
     }
+    
+    public function update(){
+        $query = DB::connection()->prepare('UPDATE task (task_name, task_status, task_description, deadline, task_importance) VALUES (:task_name, :task_status, :task_description, :deadline, :task_importance) RETURNING id');
+        $query->execute(array('task_name' => $this->task_name, 'task_status' => $this->task_status, 'task_description' => $this->task_description, 'deadline' => $this->deadline, 'task_importance' => $this->task_importance));
+        $row = $query->fetch();
+        $this->id = $row ['id'];
+    }
+    
+     public function destroy($id){
+         DB::connection()->execute('DELETE FROM task WHERE id= :id LIMIT 1 ');
+    }
 
     public function validate_task_name() {
         $errors = array();
@@ -79,7 +90,8 @@ class Task extends BaseModel {
         return $errors;
     }
 
-   /* public function validate_deadline() {
+   /* kommentoitu takarajan validointi pois, sillä herjaa että ei ole date vaikka on, selvitettävä
+      public function validate_deadline() {
         $errors = array();
         if (preg_match("/^(\d{4})-(\d{2})-(\d{2})$/", $this->deadline, $matches)) {
             if (checkdate($matches[2], $matches[3], $matches[1])) {
