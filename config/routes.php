@@ -75,3 +75,12 @@
         $routes->get('/tehtava/:id', function($id) {
         TaskController::show($id);
   });
+  
+  $routes->get('/login', function(){
+      PersonController::login();
+  });
+  
+   $routes->post('/login', function(){
+      PersonController::handle_login();
+  });
+  

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/forms.html" as forms %}
 
 <h1>Tehtävä</h1>
 
@@ -25,17 +26,10 @@
 </ul>
 
 <p>
-    <a href="{{base_bath}}/tsoha2016/tehtava/{{task.id}}/muokkaa" class="btn btn-primary btn-lg">Muokkaa tehtävää</a>
+    <a href="{{base_path}}/tsoha2016/tehtava/{{task.id}}/muokkaa" class="btn btn-primary btn-lg">Muokkaa tehtävää</a>
 
+    {{forms.destroy_button("#{base_path}/tehtava/#{task.id}/poista")}}
+    
 </p>
-
-<form method="post" action="{{base_path}}/tsoha2016/tehtava/{{task.id}}/poista" style="display: inline-block;">
-    <button type="submit" class="btn btn-danger">Poista tehtävä</button>
-</form>
-
-<!-- vanha poista painike
-<p>
-    <button class="btn btn-danger">Poista tehtävä </button>
-</p>-->
 
 {% endblock %}
