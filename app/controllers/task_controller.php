@@ -69,7 +69,7 @@ class TaskController extends BaseController {
     public static function destroy($id) {
         $task = new Task(array('id' => $id));
         $task->destroy($id);
-        Redirect::to('/tehtava', array('message' => 'Tehtävä on poistettu'));
+        Redirect::to('/tehtava/' .$task->id, array('message' => 'Tehtävä on poistettu'));
     }
 
 }

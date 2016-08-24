@@ -13,18 +13,6 @@
 </div>
 {%endif%}
 
-
-<!-- näyttösivun lista
-<ul>
-    <li><strong>Tehtävän nimi: </strong>{{task.task_name}}</li>
-    <li><strong>Tehtävän kuvaus: </strong>{{task.task_description}}</li>
-    <li><strong>Takaraja: </strong>{{task.deadline}}</li>
-    <li><strong>Tila: </strong>{{task.task_status}}</li>
-    <li><strong>Prioriteetti: </strong>{{task.task_importance}}</li>
-    <!-- lisätään myöhemmin <li><strong>Luokka:</strong> {{categorize.task_category}}</li>      
-
-</ul> -->
-
 <form method="post" action="{{base_path}}/tehtava">
     <div class="form-group">
         <label class="control-label">Nimi</label>
@@ -48,7 +36,7 @@
 
     <div class="form-group">
         <label>Takaraja</label>
-        <input name="deadline" class="form-control" type="text">
+        <input name="deadline" class="form-control" type="text" value="{{attributes.deadline}}">
     </div>
 
     <div class="form-group">

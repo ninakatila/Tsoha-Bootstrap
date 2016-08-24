@@ -58,15 +58,17 @@ class Task extends BaseModel {
     }
     
     public function update(){
-        $query = DB::connection()->prepare('UPDATE task (task_name, task_status, task_description, deadline, task_importance) VALUES (:task_name, :task_status, :task_description, :deadline, :task_importance) RETURNING id');
+        $query = DB::connection()->prepare('UPDATE task SET (task_name, task_status, task_description, deadline, task_importance) VALUES (:task_name, :task_status, :task_description, :deadline, :task_importance)RETURNING id');
         $query->execute(array('task_name' => $this->task_name, 'task_status' => $this->task_status, 'task_description' => $this->task_description, 'deadline' => $this->deadline, 'task_importance' => $this->task_importance));
         $row = $query->fetch();
         
     }
     
      public function destroy($id){
-         DB::connection()->execute('DELETE FROM task WHERE id= :id LIMIT 1 ');
-    }
+         $query = DB::connection()->prepare('DELETE FROM task WHERE id= :id');
+         $query->execute(array('id'=>$id));
+         
+     }
 
     public function validate_task_name() {
         $errors = array();
