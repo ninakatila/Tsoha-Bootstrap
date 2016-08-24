@@ -8,11 +8,20 @@ class Person extends BaseModel{
         
     }
     
-    public static function authenticate(){
+    public static function authenticate($username, $password){
         $query = DB::connection()->prepare('SELECT * FROM person WHERE username= :username AND password= :password LIMIT 1');
         $query->execute(array('username'=> $username, 'password'=>$password));
         $row=$query->fetch();
         if ($row){
+            $person = new Person(array(
+                'id' => $row['id'],
+                'lastname' => $row['lastname'],
+                'firstname' => $row['firstname'],
+                'phone' => $row['phone'],
+                'mail' => $row['mail'],
+                'username' => $row['username'],
+                'passeword' => $row['password']
+            ));
             return $person;
         }else{
             return null;           
@@ -24,10 +33,19 @@ class Person extends BaseModel{
         $query->execute(array('id' => $id));
         $row = $query->fetch();
         if ($row){
-            //palautetaan löytynyt käyttäjä
+            $person = new Person(array(
+                'id' => $row['id'],
+                'lastname' => $row['lastname'],
+                'firstname' => $row['firstname'],
+                'phone' => $row['phone'],
+                'mail' => $row['mail'],
+                'username' => $row['username'],
+                'passeword' => $row['password']
+            ));
+            return $person;
             
         }else{
-            //palautetaan null            
+            return null;            
         }
     }
 

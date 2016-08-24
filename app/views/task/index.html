@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Tehtävälista</h1>
+<h1>Muistilista</h1>
+
+{% if message %}
+<div class="alert alert-success">
+    {{message}}
+</div>
+{%endif%}
 
 <p>
     <a href="{{base_bath}}/tsoha2016/tehtava/uusi" class="btn btn-primary">Lisää uusi tehtävä</a>
