@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+{% import "macros/forms.html" as forms %}
+
+<h1>Tehtäväluokka</h1>
+
+{% if message %}
+<div class="alert alert-success">
+    {{message}}
+</div>
+{%endif%}
+
+
+<p class="lead">
+    {{category.category_name}}
+</p>
+
+<ul>
+    <li><strong>Tehtäväluokan nimi: </strong>{{category.category_name}}</li>
+    <li><strong>Tehtäväluokan kuvaus: </strong>{{category.category_description}}</li>
+</ul>
+
+<p>
+    <a href="{{base_path}}/tehtavaluokka/{{category.id}}/muokkaa" class="btn btn-primary btn-lg">Muokkaa tehtäväluokkaa</a>
+
+    {{forms.destroy_button("#{base_path}/tehtavaluokka/#{category.id}/poista")}}
+    
+</p>
+
+{% endblock %}

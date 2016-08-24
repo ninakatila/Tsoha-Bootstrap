@@ -14,13 +14,11 @@ class TaskController extends BaseController {
         View::make('task/task.html', array('task' => $task));
     }
 
-    public static function create() {
-        self::check_logged_in();
+    public static function create() {        
         View::make('task/new.html');
     }
 
-    public static function store() {
-        self::check_logged_in();
+    public static function store() {        
         $params = $_POST;
         $attributes = array(
             'task_name' => $params ['task_name'],

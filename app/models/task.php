@@ -7,6 +7,7 @@ class Task extends BaseModel {
     public function __construct($attributes) {
         parent::__construct($attributes);
         $this->validators = array('validate_task_name', 'validate_task_description');
+              
     }
 
     public static function all() {

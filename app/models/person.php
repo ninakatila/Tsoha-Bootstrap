@@ -40,7 +40,7 @@ class Person extends BaseModel{
                 'phone' => $row['phone'],
                 'mail' => $row['mail'],
                 'username' => $row['username'],
-                'passeword' => $row['password']
+                'password' => $row['password']
             ));
             return $person;
             
