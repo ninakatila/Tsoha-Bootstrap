@@ -84,3 +84,7 @@
       PersonController::handle_login();
   });
   
+     $routes->post('/logout', function(){
+      PersonController::logout();
+  });
+  

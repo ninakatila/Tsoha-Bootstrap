@@ -16,5 +16,10 @@ class PersonController extends BaseController{
             Redirect::to('/', array('message'=> 'Tervetuloa takaisin'.$person->firstname.'!'));
         }
     }
+    
+    public static function logout(){
+        $_SESSION['person']= null;
+        Redirect::to('/login', array('message' => 'Olet kirjautunut ulos'));
+    }
 }
 
