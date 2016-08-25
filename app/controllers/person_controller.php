@@ -13,7 +13,7 @@ class PersonController extends BaseController{
         }else{
             $_SESSION['person'] = $person->id;
             
-            Redirect::to('/', array('message'=> 'Tervetuloa takaisin'.$person->firstname.'!'));
+            Redirect::to('/tehtavalista', array('message'=> 'Tervetuloa takaisin'.$person->firstname.'!'));
         }
     }
     

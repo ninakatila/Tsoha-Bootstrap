@@ -27,9 +27,13 @@
 
 <p>
     <a href="{{base_path}}/tehtava/{{task.id}}/muokkaa" class="btn btn-primary btn-lg">Muokkaa tehtävää</a>
-
-    {{forms.destroy_button("#{base_path}/tehtava/#{task.id}/poista")}}
-    
 </p>
+<form method="post" action="{{base_path}}/tehtava/{{task.id}}/poista" class="destroy-form" data-confirm="Haluatko varmasti poistaa tehtävän?">
+    <button type="submit" class="btn btn-danger">Poista</button>
+</form>
+   <!-- vanha poista-nappi
+   {{forms.destroy_button("#{base_path}/tehtava/#{task.id}/poista")}}
+   --> 
+
 
 {% endblock %}

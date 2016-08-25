@@ -53,31 +53,6 @@ $routes->get('/tehtavalista', function() {
     TaskController::index();
 });
 
-$routes->get('/tehtava/uusi', function() {
-    TaskController::create();
-});
-
-$routes->get('/tehtava/:id/muokkaa', function($id) {
-    TaskController::edit($id);
-});
-
-$routes->post('/tehtava/:id/muokkaa', function($id) {
-    TaskController::update($id);
-});
-
-$routes->post('/tehtava/:id/poista', function($id) {
-    TaskController::destroy($id);
-});
-
-$routes->get('/tehtava/:id', function($id) {
-    TaskController::show($id);
-});
-
-
-$routes->post('/tehtava', function() {
-    TaskController::store();
-});
-
 $routes->get('/login', function() {
     PersonController::login();
 });
@@ -119,3 +94,27 @@ $routes->post('/tehtavaluokka', function() {
     CategoryController::store();
 });
 
+$routes->get('/tehtava/uusi', function() {
+    TaskController::create();
+});
+
+$routes->get('/tehtava/:id/muokkaa', function($id) {
+    TaskController::edit($id);
+});
+
+$routes->post('/tehtava/:id/muokkaa', function($id) {
+    TaskController::update($id);
+});
+
+$routes->post('/tehtava/:id/poista', function($id) {
+    TaskController::destroy($id);
+});
+
+$routes->get('/tehtava/:id', function($id) {
+    TaskController::show($id);
+});
+
+
+$routes->post('/tehtava', function() {
+    TaskController::store();
+});

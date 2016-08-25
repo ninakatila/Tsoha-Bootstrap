@@ -9,27 +9,28 @@ class Task extends BaseModel {
         $this->validators = array('validate_task_name', 'validate_task_description');
               
     }
-
-    public static function all() {
-        $query = DB::connection()->prepare('SELECT * FROM task ORDER BY task_status ASC, task_importance ASC, deadline ASC');
-        $query->execute();
+    
+    public static function all($options){
+        $query_string='SELECT * FROM task WHERE personid= :personid';
+        $options= array('personid'=> $options['personid']);
+        if (isset($options['search'])){
+            $query_string .= ' AND name LIKE :like';
+            $options['like']= '%' . $options['search'] . '%';
+        }
+        
+        $query = DB::connection()->prepare($query_string);
+        $query->execute($options);
+        
         $rows = $query->fetchAll();
         $tasks = array();
-
-        foreach ($rows as $row) {
-            $tasks[] = new Task(array(
-                'id' => $row['id'],
-                'task_name' => $row['task_name'],
-                'task_status' => $row['task_status'],
-                'task_description' => $row['task_description'],
-                'deadline' => $row['deadline'],
-                'task_importance' => $row['task_importance'],
-                'personid' => $row['personid']
-            ));
+        
+        foreach ($rows as $row){
+            $tasks[]= new Task($row);
         }
+        
         return $tasks;
-    }
-
+        }
+    
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM task WHERE id= :id LIMIT 1');
         $query->execute(array('id' => $id));
@@ -52,8 +53,8 @@ class Task extends BaseModel {
     }
 
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO task (task_name, task_status, task_description, deadline, task_importance) VALUES (:task_name, :task_status, :task_description, :deadline, :task_importance) RETURNING id');
-        $query->execute(array('task_name' => $this->task_name, 'task_status' => $this->task_status, 'task_description' => $this->task_description, 'deadline' => $this->deadline, 'task_importance' => $this->task_importance));
+        $query = DB::connection()->prepare('INSERT INTO task (task_name, task_status, task_description, deadline, task_importance, personid) VALUES (:task_name, :task_status, :task_description, :deadline, :task_importance, :personid) RETURNING id');
+        $query->execute(array('task_name' => $this->task_name, 'task_status' => $this->task_status, 'task_description' => $this->task_description, 'deadline' => $this->deadline, 'task_importance' => $this->task_importance, 'personid'=>  $this->personid));
         $row = $query->fetch();
         $this->id = $row ['id'];
     }
