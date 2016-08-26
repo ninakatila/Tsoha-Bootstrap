@@ -5,7 +5,7 @@ class CategoryController extends BaseController{
     public static function index() {
         self::check_logged_in();
         $categories = Category::all();
-        View::make('category/index.html', array('categories' => $categories));
+        View::make('category/list_category.html', array('categories' => $categories));
     }
 
     public static function show($id) {
@@ -15,7 +15,7 @@ class CategoryController extends BaseController{
     }
 
     public static function create() {        
-        View::make('category/new.html');
+        View::make('category/new_category.html');
     }
 
     public static function store() {        
@@ -33,14 +33,14 @@ class CategoryController extends BaseController{
 
             Redirect::to('/tehtavaluokka/' . $category->id, array('message' => 'Tehtäväluokka on lisätty muistilistaan'));
         } else {
-            View::make('category/new.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('category/new_category.html', array('errors' => $errors, 'attributes' => $attributes));
         }
     }
 
     public static function edit($id) {
         self::check_logged_in();
         $category = Category::find($id);
-        View::make('category/edit.html', array('attributes' => $category));
+        View::make('category/edit_category.html', array('attributes' => $category));
     }
 
     public static function update($id) {
@@ -56,7 +56,7 @@ class CategoryController extends BaseController{
         $errors = $category->errors();
 
         if (count($errors) > 0) {
-            View::make('category/edit.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('category/edit_category.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
             $category->update();
 

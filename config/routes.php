@@ -4,51 +4,6 @@ $routes->get('/', function() {
     PersonController::login();
 });
 
-/* $routes->get('/muistilista/kirjautuminen', function() {
-  HelloWorldController::login();
-  });
-
-  $routes->get('/muistilista/tehtavalista', function() {
-  HelloWorldController::task_list();
-  });
-
-  $routes->get('/muistilista/tehtava', function() {
-  HelloWorldController::task();
-  });
-
-  $routes->get('/muistilista/tehtava/muokkaa', function() {
-  HelloWorldController::edit_task();
-  });
-
-  $routes->get('/muistilista/tehtavaluokat', function() {
-  HelloWorldController::category_list();
-  });
-
-  $routes->get('/muistilista/tehtavaluokka', function() {
-  HelloWorldController::category();
-  });
-
-  $routes->get('/muistilista/tehtavaluokka/muokkaa', function() {
-  HelloWorldController::edit_category();
-  });
-
-  $routes->get('/muistilista/prioriteetit', function() {
-  HelloWorldController::importance_list();
-  });
-
-  $routes->get('/muistilista/prioriteetti', function() {
-  HelloWorldController::importance();
-  });
-
-  $routes->get('/muistilista/prioriteetti/muokkaa', function() {
-  HelloWorldController::edit_importance();
-  });
-
-  $routes->get('/hiekkalaatikko', function() {
-  HelloWorldController::sandbox();
-  });
- */
-
 $routes->get('/tehtavalista', function() {
     TaskController::index();
 });
@@ -92,6 +47,35 @@ $routes->get('/tehtavaluokka/:id', function($id) {
 
 $routes->post('/tehtavaluokka', function() {
     CategoryController::store();
+});
+
+$routes->get('/prioriteetit', function() {
+    ImportanceController::index();
+});
+
+$routes->get('/prioriteetti/uusi', function() {
+    ImportanceController::create();
+});
+
+$routes->get('/prioriteetti/:id/muokkaa', function($id) {
+    ImportanceController::edit($id);
+});
+
+$routes->post('/prioriteetti/:id/muokkaa', function($id) {
+    ImportanceController::update($id);
+});
+
+$routes->post('/prioriteetti/:id/poista', function($id) {
+    ImportanceController::destroy($id);
+});
+
+$routes->get('/prioriteetti/:id', function($id) {
+    ImportanceController::show($id);
+});
+
+
+$routes->post('/prioriteetti', function() {
+    ImportanceController::store();
 });
 
 $routes->get('/tehtava/uusi', function() {

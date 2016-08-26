@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Käyttäjän {{user_logged_in.firstname}} prioriteetit</h1>
+
+{% if message %}
+<div class="alert alert-success">
+    {{message}}
+</div>
+{%endif%}
+
+<p>
+    <a href="{{base_bath}}/tsoha2016/prioriteetti/uusi" class="btn btn-primary">Lisää uusi prioriteetti</a>
+
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Arvo</th>
+            <th>Kuvaus</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for importance in importances %}
+        <tr>
+            <td><a href="{{base_path}}/prioriteetti/{{importance.id}}">{{importance.importance_value}}</td>
+            <td>{{importance.importance_description}}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

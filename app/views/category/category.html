@@ -22,9 +22,11 @@
 
 <p>
     <a href="{{base_path}}/tehtavaluokka/{{category.id}}/muokkaa" class="btn btn-primary btn-lg">Muokkaa tehtäväluokkaa</a>
-
-    {{forms.destroy_button("#{base_path}/tehtavaluokka/#{category.id}/poista")}}
-    
 </p>
+
+    <form method="post" action="{{base_path}}/tehtavaluokka/{{category.id}}/poista" class="destroy-form" data-confirm="Haluatko varmasti poistaa tehtäväluokan?">
+    <button type="submit" class="btn btn-danger">Poista</button>
+</form>
+    
 
 {% endblock %}

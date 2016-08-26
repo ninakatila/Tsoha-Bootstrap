@@ -22,9 +22,9 @@
     <div class="form-group">
         <label class="control-label">Tila</label>
         <select name="task_status" class="form-control">
-            <option value="Avoin">Avoin</option>
-            <option value="Kesken">Kesken</option>
-            <option value="Valmis">Valmis</option>
+            <option value="{{attribute.task_status}}">Avoin</option>
+            <option value="{{attribute.task_status}}">Kesken</option>
+            <option value="{{attribute.task_status}}">Valmis</option>
         </select>
             
     </div>
@@ -42,9 +42,9 @@
     <div class="form-group">
         <label>Prioriteetti</label>
         <select name="task_importance" class="form-control">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="{{attribute.task_importance}}">1</option>
+            <option value="{{attribute.task_importance}}">2</option>
+            <option value="{{attribute.task_importance}}">3</option>
         </select>
     </div>
     
