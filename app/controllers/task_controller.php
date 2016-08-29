@@ -73,22 +73,34 @@ class TaskController extends BaseController {
     public static function edit($id) {
         self::check_logged_in();
         $task = Task::find($id);
-        View::make('task/edit.html', array('attributes' => $task));
+        $categories= Category::all();
+        $importance= Importance::all();
+        View::make('task/edit.html', array('attributes' => $task, 'categories' => $categories, 'importances'=>$importance));
     }
 
     public static function update($id) {
         self::check_logged_in();
         $user_logged_in=  self::get_user_logged_in();
         $params = $_POST;
+        $categories = $params['categories'];
+        $importance = $params['importance'];
         $attributes = array(
             'id' => $id,
             'task_name' => $params ['task_name'],
             'task_status' => $params ['task_status'],
             'task_description' => $params ['task_description'],
             'deadline' => $params ['deadline'],
-            'task_importance' => $params ['task_importance'],
+            'task_importance' => (int)$importance,//vanha:'task_importance' => $params ['task_importance'],
+            'category'=>array(),
             'personid'=>$user_logged_in->id
         );
+        
+        foreach ($categories as $category){
+            $attributes['categories'][]= (int)$category;
+            //tähän laitettava categorize modelin metodi update, joka otta parametriski task.id:n ja categoryn ja tallentaa tässä luupin sisällä rivi kerrallaan
+            // aiheuttaa muutoksia updateen ja poistoon (taskin ja categoryn)
+            
+        }
 
         $task = new Task($attributes);
         $errors = $task->errors();
