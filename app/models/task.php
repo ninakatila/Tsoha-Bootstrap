@@ -52,10 +52,10 @@ class Task extends BaseModel {
     }
 
     public function save() {
-        Kint::dump($this);
-        die();
+       // Kint::dump($this);
+        //die();
         $query = DB::connection()->prepare('INSERT INTO task (task_name, task_status, task_description, deadline, task_importance, personid) VALUES (:task_name, :task_status, :task_description, :deadline, :task_importance, :personid) RETURNING id');
-        $query->execute(array('task_name' => $this->task_name, 'task_status' => $this->task_status, 'task_description' => $this->task_description, 'deadline' => $this->deadline, 'task_importance' => $this->importance, 'personid'=>  $this->personid));
+        $query->execute(array('task_name' => $this->task_name, 'task_status' => $this->task_status, 'task_description' => $this->task_description, 'deadline' => $this->deadline, 'task_importance' => $this->task_importance, 'personid'=>  $this->personid));
         $row = $query->fetch();
         $this->id = $row ['id'];
     }
