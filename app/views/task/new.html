@@ -41,10 +41,10 @@
 
     <div class="form-group">
         <label>Prioriteetti</label>
-        <select name="task_importance" class="form-control">
-            <option value="{{attribute.task_importance}}">1</option>
-            <option value="{{attribute.task_importance}}">2</option>
-            <option value="{{attribute.task_importance}}">3</option>
+        <select class="form-control" name="importance">
+            {% for importance in importances %}
+            <option value="{{importance.id}}">{{importance.importance_value}}</option>
+            {% endfor %}
         </select>
     </div>
     

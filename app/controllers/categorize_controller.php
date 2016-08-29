@@ -1,38 +1,20 @@
 <?php
 
-class TaskController extends BaseController {
+class CategorizeController extends BaseController {
 
-    public static function index() {
-        self::check_logged_in();
-        $user_logged_in = self::get_user_logged_in();
-        $params = $_GET;
-        $options = array('personid' => $user_logged_in->id);
-        
-        if(isset($params['search'])){
-            $options['search']=$params['search'];
-        }
-        
-        $tasks = Task::all($options);
-        
-        View::make('task/index.html', array('tasks' => $tasks));
-      
-    }
 
     public static function show($id) {
-        self::check_logged_in();
+        
+        /*self::check_logged_in();
         $task = Task::find($id);
         View::make('task/task.html', array('task' => $task));
-    }
-
-    public static function create() {  
-        $categories= Category::all();
-        $importance= Importance::all();
-        View::make('task/new.html', array ('categories' => $categories, 'importances'=>$importance));
-        
+                 */
     }
 
     public static function store() {  
+        /*
         $user_logged_in=  self::get_user_logged_in();
+        
         $params = $_POST;
         Kint::dump($params);
         
@@ -65,17 +47,21 @@ class TaskController extends BaseController {
             Redirect::to('/tehtava/' . $task->id, array('message' => 'Tehtävä on lisätty muistilistaan'));
         } else {
             View::make('task/new.html', array('errors' => $errors, 'attributes' => $attributes));
-        }
+        }  */
     }
 
     public static function edit($id) {
+        
+        /*
         self::check_logged_in();
         $task = Task::find($id);
         View::make('task/edit.html', array('attributes' => $task));
+          */
     }
 
     public static function update($id) {
-        self::check_logged_in();
+        
+        /*self::check_logged_in();
         $user_logged_in=  self::get_user_logged_in();
         $params = $_POST;
         $attributes = array(
@@ -97,14 +83,16 @@ class TaskController extends BaseController {
             $task->update();
 
             Redirect::to('/tehtava/' . $task->id, array('message' => 'Tehtävän muokkaus onnistui'));
-        }
+        } */
     }
 
     public static function destroy($id) {
-        self::check_logged_in();
+        
+        /*self::check_logged_in();
         $task = new Task(array('id' => $id));
         $task->destroy($id);
         Redirect::to('/tehtava/' .$task->id, array('message' => 'Tehtävä on poistettu'));
-    }
+    } */
 
+}
 }

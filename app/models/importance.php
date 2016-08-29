@@ -69,6 +69,7 @@ class Importance extends BaseModel{
         if ($this->importance_value == null) {
             $errors[] = 'Arvo ei saa olla tyhjä';
         }
+        return $errors;
     }
 
     public function validate_importance_description() {
