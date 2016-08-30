@@ -9,8 +9,22 @@ class Category extends BaseModel{
               
     }
 
-    public static function all() {
-        $query = DB::connection()->prepare('SELECT * FROM category ORDER BY category_name ASC');
+    public static function all($options) {
+        $query=DB::connection()->prepare('SELECT * FROM category WHERE personid= :personid');
+        $query->execute(array('personid'=> $options['personid']));
+       
+        
+        $rows = $query->fetchAll();
+        $categories = array();
+        
+        foreach ($rows as $row){
+            $categories[]= new Category($row);
+        }        
+        return $categories;
+        }
+    
+     
+        /* $query = DB::connection()->prepare('SELECT * FROM category ORDER BY category_name ASC');
         $query->execute();
         $rows = $query->fetchAll();
         $categories = array();
@@ -24,7 +38,7 @@ class Category extends BaseModel{
             ));
         }
         return $categories;
-    }
+    }*/
 
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM category WHERE id= :id');

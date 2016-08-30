@@ -9,8 +9,20 @@ class Importance extends BaseModel{
               
     }
 
-    public static function all() {
-        $query = DB::connection()->prepare('SELECT * FROM importance ORDER BY importance_value ASC');
+    public static function all($options) {
+        $query=DB::connection()->prepare('SELECT * FROM importance WHERE personid= :personid');
+        $query->execute(array('personid'=>$options['personid']));
+        
+        $rows = $query->fetchAll();
+        $importances = array();
+        
+        foreach ($rows as $row){
+            $importances[]= new Importance($row);
+        }        
+        return $importances;
+        }
+    
+       /* $query = DB::connection()->prepare('SELECT * FROM importance ORDER BY importance_value ASC');
         $query->execute();
         $rows = $query->fetchAll();
         $importances = array();
@@ -24,7 +36,7 @@ class Importance extends BaseModel{
             ));
         }
         return $importances;
-    }
+    }*/
 
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM importance WHERE id= :id');

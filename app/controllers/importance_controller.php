@@ -4,7 +4,11 @@ class ImportanceController extends BaseController{
     
     public static function index() {
         self::check_logged_in();
-        $importances = Importance::all();
+        $user_logged_in = self::get_user_logged_in();
+        $params = $_GET;
+        $options = array('personid' => $user_logged_in->id);        
+        $importances = Importance::all($options);
+        
         View::make('importance/list_importance.html', array('importances' => $importances));
     }
 
