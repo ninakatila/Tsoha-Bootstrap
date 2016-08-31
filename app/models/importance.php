@@ -10,7 +10,7 @@ class Importance extends BaseModel{
     }
 
     public static function all($options) {
-        $query=DB::connection()->prepare('SELECT * FROM importance WHERE personid= :personid');
+        $query=DB::connection()->prepare('SELECT * FROM importance WHERE personid= :personid ORDER BY importance_value ASC');
         $query->execute(array('personid'=>$options['personid']));
         
         $rows = $query->fetchAll();
@@ -57,15 +57,15 @@ class Importance extends BaseModel{
     }
 
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO importance (importance_value, importance_description) VALUES (:importance_value, :importance_description) RETURNING id');
-        $query->execute(array('importance_value' => $this->importance_value, 'importance_description' => $this->importance_description));
+        $query = DB::connection()->prepare('INSERT INTO importance (importance_value, importance_description, personid) VALUES (:importance_value, :importance_description, :personid) RETURNING id');
+        $query->execute(array('importance_value' => $this->importance_value, 'importance_description' => $this->importance_description, 'personid'=>  $this->personid));
         $row = $query->fetch();
         $this->id = $row ['id'];
     }
     
     public function update(){
-        $query = DB::connection()->prepare('UPDATE importance SET (importance_value, importance_description) VALUES (:importance_value, :importance_description)RETURNING id');
-        $query->execute(array('importance_value' => $this->importance_value, 'importance_description' => $this->importance_description));
+        $query = DB::connection()->prepare('UPDATE importance SET (importance_value= :importance_value, importance_description= :importance_description WHERE id= :id');
+        $query->execute(array('importance_value' => $this->importance_value, 'importance_description' => $this->importance_description, 'id'=>  (int)$this->id));
         $row = $query->fetch();
         
     }

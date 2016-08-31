@@ -21,11 +21,13 @@ class CategoryController extends BaseController{
         View::make('category/new_category.html');
     }
 
-    public static function store() {        
+    public static function store() { 
+        $user_logged_in=  self::get_user_logged_in();
         $params = $_POST;
         $attributes = array(
             'category_name' => $params ['category_name'],
             'category_description' => $params ['category_description'],
+            'personid'=>$user_logged_in->id
             );
 
         $category = new Category($attributes);
@@ -48,11 +50,13 @@ class CategoryController extends BaseController{
 
     public static function update($id) {
         self::check_logged_in();
+        $user_logged_in=  self::get_user_logged_in();
         $params = $_POST;
         $attributes = array(
             'id' => $id,
             'category_name' => $params ['category_name'],
             'category_description' => $params ['category_description'],
+            'personid'=>$user_logged_in->id
         );
 
         $category = new Category($attributes);

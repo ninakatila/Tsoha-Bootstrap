@@ -22,11 +22,13 @@ class ImportanceController extends BaseController{
         View::make('importance/new_importance.html');
     }
 
-    public static function store() {        
+    public static function store() { 
+        $user_logged_in=  self::get_user_logged_in();
         $params = $_POST;
         $attributes = array(
             'importance_value' => $params ['importance_value'],
             'importance_description' => $params ['importance_description'],
+            'personid'=>$user_logged_in->id
             );
 
         $importance = new Importance($attributes);
@@ -49,11 +51,13 @@ class ImportanceController extends BaseController{
 
     public static function update($id) {
         self::check_logged_in();
+        $user_logged_in=  self::get_user_logged_in();
         $params = $_POST;
         $attributes = array(
             'id' => $id,
             'importance_value' => $params ['importance_value'],
             'importance_description' => $params ['importance_description'],
+            'personid'=>$user_logged_in->id
         );
 
         $importance = new Importance($attributes);

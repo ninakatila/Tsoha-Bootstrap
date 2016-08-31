@@ -10,9 +10,8 @@ class Category extends BaseModel{
     }
 
     public static function all($options) {
-        $query=DB::connection()->prepare('SELECT * FROM category WHERE personid= :personid');
-        $query->execute(array('personid'=> $options['personid']));
-       
+        $query=DB::connection()->prepare('SELECT * FROM category WHERE personid= :personid ORDER BY category_name ASC');
+        $query->execute(array('personid'=> $options['personid'])); 
         
         $rows = $query->fetchAll();
         $categories = array();
@@ -59,15 +58,15 @@ class Category extends BaseModel{
     }
 
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO category (category_name, category_description) VALUES (:category_name, :category_description) RETURNING id');
-        $query->execute(array('category_name' => $this->category_name, 'category_description' => $this->category_description));
+        $query = DB::connection()->prepare('INSERT INTO category (category_name, category_description, personid) VALUES (:category_name, :category_description, :personid) RETURNING id');
+        $query->execute(array('category_name' => $this->category_name, 'category_description' => $this->category_description, 'personid'=>  $this->personid));
         $row = $query->fetch();
         $this->id = $row ['id'];
     }
     
     public function update(){
-        $query = DB::connection()->prepare('UPDATE category SET (category_name, category_description) VALUES (:category_name, :category_description)RETURNING id');
-        $query->execute(array('category_name' => $this->category_name, 'category_description' => $this->category_description));
+        $query = DB::connection()->prepare('UPDATE category SET (category_name= :category_name, category_description= :category_description WHERE id= :id');
+        $query->execute(array('category_name' => $this->category_name, 'category_description' => $this->category_description, 'id'=>  (int)$this->id));
         $row = $query->fetch();
         
     }

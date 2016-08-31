@@ -11,7 +11,7 @@ class Task extends BaseModel {
     }
     
     public static function all($options){
-        $query_string='SELECT * FROM task WHERE personid= :personid';
+        $query_string='SELECT * FROM task WHERE personid= :personid ORDER BY task_status ASC, deadline ASC, task_importance ASC';
         $options= array('personid'=> $options['personid']);
         if (isset($options['search'])){
             $query_string .= ' AND name LIKE :like';
@@ -61,8 +61,7 @@ class Task extends BaseModel {
     }
     
     public function update(){
-        Kint::dump($this);
-        
+        //Kint::dump($this);        
         $query = DB::connection()->prepare('UPDATE task SET task_name= :task_name, task_status= :task_status, task_description= :task_description, deadline= :deadline, task_importance= :task_importance WHERE id= :id');
         $query->execute(array('task_name' => $this->task_name, 'task_status' => $this->task_status, 'task_description' => $this->task_description, 'deadline' => $this->deadline, 'task_importance' => $this->task_importance, 'id'=>  (int)$this->id));
         $row = $query->fetch();

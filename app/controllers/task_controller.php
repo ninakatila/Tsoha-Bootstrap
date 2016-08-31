@@ -25,8 +25,11 @@ class TaskController extends BaseController {
     }
 
     public static function create() {  
-        $categories= Category::all();
-        $importance= Importance::all();
+        self::check_logged_in();
+        $user_logged_in = self::get_user_logged_in();
+        $options = array('personid' => $user_logged_in->id);
+        $categories= Category::all($options);
+        $importance= Importance::all($options);
         View::make('task/new.html', array ('categories' => $categories, 'importances'=>$importance));
         
     }
@@ -36,7 +39,7 @@ class TaskController extends BaseController {
         $params = $_POST;
         //Kint::dump($params);
         
-        $categories = $params['categories'];
+        //$categories = $params['categories'];
         $importance = $params['importance'];
         
        
@@ -45,18 +48,18 @@ class TaskController extends BaseController {
             'task_status' => $params ['task_status'],
             'task_description' => $params ['task_description'],
             'deadline' => $params ['deadline'],
-            'task_importance' => (int)$importance, // vanha: (int)$params['importance'],
+            'task_importance' => (int)$importance['importance_value'], 
             'category'=>array(),
             'personid'=>$user_logged_in->id
            
         );
         
-        foreach ($categories as $category){
-            $attributes['categories'][]= (int)$category;
+        //foreach ($categories as $category){
+           // $attributes['categories'][]= (int)$category;
             //tähän laitettava categorize modelin metodi save, joka otta parametriski task.id:n ja categoryn ja tallentaa tässä luupin sisällä rivi kerrallaan
             // aiheuttaa muutoksia updateen ja poistoon (taskin ja categoryn)
             
-        }
+        //}
 
         $task = new Task($attributes);
         $errors = $task->errors();
@@ -72,9 +75,11 @@ class TaskController extends BaseController {
 
     public static function edit($id) {
         self::check_logged_in();
+        $user_logged_in = self::get_user_logged_in();
+        $options = array('personid' => $user_logged_in->id);
         $task = Task::find($id);
-        $categories= Category::all();
-        $importance= Importance::all();
+        $categories= Category::all($options);
+        $importance= Importance::all($options);
         View::make('task/edit.html', array('attributes' => $task, 'categories' => $categories, 'importances'=>$importance));
     }
 
@@ -82,7 +87,7 @@ class TaskController extends BaseController {
         self::check_logged_in();
         $user_logged_in=  self::get_user_logged_in();
         $params = $_POST;
-        $categories = $params['categories'];
+        //$categories = $params['categories'];
         $importance = $params['importance'];
         $attributes = array(
             'id' => $id,
@@ -90,17 +95,16 @@ class TaskController extends BaseController {
             'task_status' => $params ['task_status'],
             'task_description' => $params ['task_description'],
             'deadline' => $params ['deadline'],
-            'task_importance' => (int)$importance,//vanha:'task_importance' => $params ['task_importance'],
+            'task_importance' =>(int)$importance['importance_value'],
             'category'=>array(),
             'personid'=>$user_logged_in->id
         );
         
-        foreach ($categories as $category){
-            $attributes['categories'][]= (int)$category;
+        //foreach ($categories as $category){
+           // $attributes['categories'][]= (int)$category;
             //tähän laitettava categorize modelin metodi update, joka otta parametriski task.id:n ja categoryn ja tallentaa tässä luupin sisällä rivi kerrallaan
             // aiheuttaa muutoksia updateen ja poistoon (taskin ja categoryn)
-            
-        }
+            //}
 
         $task = new Task($attributes);
         $errors = $task->errors();
